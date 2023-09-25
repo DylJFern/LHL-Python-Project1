@@ -167,11 +167,32 @@ city_bikes_df.to_sql('montreal_bike_stations', connection, if_exists = 'replace'
 connection.close()
 ```
 
-## Results
-(fill in what you found about the comparative quality of API coverage in your chosen area and the results of your model.)
+## <br>Results
+In this section we will primarily looking relationships between all the variables. A heatmap can be used to observe any correlations between the variables, the colour will vary depending on the correlation of the relationship.
 
-## Challenges 
-(discuss challenges you faced in the project)
+![Capture13](https://github.com/DylJFern/LHL-Python-Project1/assets/128000630/3f67abb5-79c0-4003-a2cc-b4524769b6f9)
 
-## Future Goals
-(what would you do if you had more time?)
+The heatmap shows us that there is a moderate negative correlation between 'fsq_rating' and 'fsq_distance (m)' and a weak negative correlation between 'yelp_rating' and 'yelp_distance(m)'. For the Foursquare data, this may suggest that as the distance from the station increases, the rating tends to decrease (indicating that places closer to the station tend to have higher ratings).
+
+It also shows a strong positive correlation between 'fsq_rating' and 'total_bikes' and a moderate positive correlation between 'yelp_rating' and 'total_bikes'. For both platforms, this could indicate that stations with more bikes are highly populated or popular areas, where people tend to frequent. These popular areas may have higher-rated establishments thus contributing to the correlation.
+
+In general, there is a moderate positive correlation between the rating and available/unavailable bikes, but there is a weak correlation between the rating and available/unavailable ebikes.
+
+Furthermore, there is a moderate negative correlation between 'fsq_distance (m)' and 'total_bikes', and a weak negative correlation between 'yelp_distaince (m)' and 'total_bikes'. For Foursquare, the data may suggest that the total number of bikes at a station decreases as the distance from the place and the station increases.
+
+<br>A multivariate regression model can help us find a relationship between multiple variables or features.
+
+![Capture14](https://github.com/DylJFern/LHL-Python-Project1/assets/128000630/9876ec31-d298-4ddd-ad17-e8719ba96bb1)
+
+The r-squared shows the goodness of fit of the model, for this specific model output it means that 50.6% of the varability in the total number of bikes at a station can be explained. The adjusted r-squared in this case is 50% which means it can explain about half of the varability, considering the trade-off between model complexity (number of predictor variables) and goodness of fit. The null hypothesis is that there is no relationship between the total number of bikes and the places, for this model all the predictor variables have p-values less than 0.05 which means that the independent variables are statistically significant in predicting the total number of bikes (the dependent variable).
+
+## <br>Challenges 
+  - The time constraint affecting the ability to perform in-depth analysis.
+  - The daily 500 API calls set by Yelp requires collecting data in advance.
+  - Uncertainty in the approach to take when conducting EDA due not general guidelines.
+
+## <br>Future Considerations
+  - Performing a more in-depth EDA process, exploring different types of visualizations (not already considered) and different plots that could been made examining different relationships.
+  - Perform API calls over a time period to gather more data, which may also help showcase any new trends over time.
+  - Examine a highly populated city like Toronto or New York and see how the data can vary between lesser populated ones.
+  - Developing models containing additional variables that can be used for comparison (if any), this may even allow us to conduct feature selection using a p-value elimination approach.
